@@ -45,3 +45,4 @@ pyvenv.cfg
 *.swp
 *.swo
 *.bak
+/.venv/
