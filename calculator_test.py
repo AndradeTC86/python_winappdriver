@@ -25,12 +25,37 @@ class Calculator_Test(unittest.TestCase):
 
     def test_addition(self):
         print("addition")
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "num1Button").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "plusButton").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "num7Button").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "equalButton").click()
+        self.assertEqual(self.get_display_results(), "8")
 
     def test_subtraction(self):
         print("subtraction")
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "num9Button").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "minusButton").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "num1Button").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "equalButton").click()
+        self.assertEqual(self.get_display_results(), "8")
 
     def test_multiplication(self):
         print("multiplication")
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "num9Button").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "multiplyButton").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "num9Button").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "equalButton").click()
+        self.assertEqual(self.get_display_results(), "81")
 
     def test_division(self):
         print("division")
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "num8Button").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "divideButton").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "num4Button").click()
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "equalButton").click()
+        self.assertEqual(self.get_display_results(), "2")
+
+    def get_display_results(self):
+        text = self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "CalculatorResults").text
+        text = text.strip("A exibição é").rstrip(" ").lstrip(" ")
+        return text
