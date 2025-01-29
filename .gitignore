@@ -1,0 +1,47 @@
+# Configurações específicas do PyCharm (baseado em IntelliJ IDEA)
+.idea/
+
+# Configurações e dependências do ambiente Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Configurações do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de log e cache
+*.log
+*.sqlite3
+
+# Gradle (se usado em projetos mistos com Java/Kotlin)
+.gradle/
+
+# Configurações de teste e relatórios
+.tox/
+.nox/
+.coverage
+coverage.xml
+*.cover
+htmlcov/
+*.pytest_cache/
+.cache/
+
+# Dependências de pacotes Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtualenv em ambientes de contêiner (Docker, etc.)
+pyvenv.cfg
+
+# Outros arquivos temporários
+*.swp
+*.swo
+*.bak
