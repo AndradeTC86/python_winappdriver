@@ -59,3 +59,14 @@ class Calculator_Test(unittest.TestCase):
         text = self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "CalculatorResults").text
         text = text.strip("A exibição é").rstrip(" ").lstrip(" ")
         return text
+
+    def choose_calculator(self, locator):
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "TogglePaneButton").click()
+        calculators = self.calcsession.find_elements(AppiumBy.CLASS_NAME, "Microsoft.UI.Xaml.Controls.NavigationViewItem")
+        for c in calculators:
+            if c.get_attribute("Name") == locator:
+                c.click()
+                break
+
+    def test_choose_calculator(self):
+        self.choose_calculator("Científica Calculadora")
