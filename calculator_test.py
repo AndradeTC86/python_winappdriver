@@ -70,3 +70,14 @@ class Calculator_Test(unittest.TestCase):
 
     def test_choose_calculator(self):
         self.choose_calculator("Científica Calculadora")
+
+    def choose_calculator_xpath(self, locator):
+        self.calcsession.find_element(AppiumBy.ACCESSIBILITY_ID, "TogglePaneButton").click()
+        calculators = self.calcsession.find_elements(AppiumBy.XPATH, "//ListItem")
+        for c in calculators:
+            if c.get_attribute("Name") == locator:
+                c.click()
+                break
+
+    def test_choose_calculator_xpath(self):
+        self.choose_calculator_xpath("Científica Calculadora")
