@@ -1,27 +1,26 @@
 import unittest
 from appium import webdriver
-from calc import calc_po
+from apps import calc_po
 from appium.options.windows import WindowsOptions
 
 class CalculatorTest(unittest.TestCase):
 
-    calcsession = None
+    calc_session = None
     calc = None
 
     def setUp(self):
-        print("setup")
         options = WindowsOptions()
         options.platform_name = 'Windows'
         options.device_name = 'WindowsPC'
         options.app = 'Microsoft.WindowsCalculator_8wekyb3d8bbwe!App'
-        self.calcsession = webdriver.Remote(
+        self.calc_session = webdriver.Remote(
             command_executor='http://127.0.0.1:4723',
             options=options
         )
-        self.calc = calc_po.CalcPO(self.calcsession)
+        self.calc = calc_po.CalcPO(self.calc_session)
 
     def tearDown(self):
-        self.calcsession.quit()
+        self.calc_session.quit()
 
     def test_addition(self):
         self.calc.get_num_button("1").click()
